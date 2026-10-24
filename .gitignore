@@ -1,0 +1,24 @@
+# Roblox & Luau
+*.rbxlx.lock
+*.rbxl.lock
+*.rbxm
+*.rbxmx
+
+# Rojo / Tooling
+.rojo/
+build/
+*.rbxl
+*.rbxlx
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# Logs & Temp
+*.log
+*.tmp
+temp/
