@@ -1,7 +1,7 @@
 # Notion Workspace Architecture & Setup Guide
 ## Roblox Game: Style a Snack (Roblox1)
 
-This guide provides the complete blueprint for setting up your **Notion Project Hub** to track game updates, feature changes, roadmap milestones, and QA test reports. It is optimized to work seamlessly alongside this GitHub repository ([Roblox1-Style-a-Snack](https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git)).
+This guide provides the complete blueprint for setting up your **Notion Project Hub** to track game updates, feature changes, roadmap milestones, and QA test reports. It is optimized to work seamlessly alongside this GitHub repository ([Roblox1-Style-a-Snack](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git)).
 
 ---
 
@@ -130,5 +130,5 @@ You can directly import the ready-to-use templates created in this repo:
 ### Step 3: Link Notion with GitHub
 1. In your Notion Hub page, add a **GitHub Embed**:
    Type `/github` and paste your repository link:
-   `https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git`
+   `https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git`
 2. Configure GitHub webhooks or GitHub Actions (via Notion Unofficial/Official integration) to automatically log commits into your `Game Changes` database.

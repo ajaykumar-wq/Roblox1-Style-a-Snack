@@ -1,5 +1,5 @@
 # 🔄 Game Changes & Updates Tracker
-### Project: Style a Snack (Roblox1) | Repository: [sajaytmpc/Roblox1-Style-a-Snack](https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git)
+### Project: Style a Snack (Roblox1) | Repository: [ajaykumar-wq/Roblox1-Style-a-Snack](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git)
 
 > **Notion Import Tip**: In Notion, create a **Database (Table or Timeline view)** with the columns defined below, or import this document directly using Notion's *Import Markdown* tool.
 
@@ -35,7 +35,7 @@
 
 ### 📦 Release v0.1.0 — Stage 1 Single-Player Core Loop
 - **Release Date**: October 25, 2026
-- **Git Commit**: [`01f92ba`](https://github.com/sajaytmpc/Roblox1-Style-a-Snack/commit/01f92ba73c2bc61655c89c0de238160537e92693)
+- **Git Commit**: [`01f92ba`](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack/commit/01f92ba73c2bc61655c89c0de238160537e92693)
 - **Deployment Status**: 🟢 Active in Development & Staging
 - **QA Signoff**: Verified in Test Run `TR-001` (Pass ✅)
 
@@ -99,7 +99,7 @@
 
 ### 📦 Release v0.0.1 — Initial Project Scaffolding
 - **Release Date**: October 24, 2026
-- **Git Commit**: [`ce3f4aa`](https://github.com/sajaytmpc/Roblox1-Style-a-Snack/commit/ce3f4aa)
+- **Git Commit**: [`ce3f4aa`](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack/commit/ce3f4aa)
 - **Deployment Status**: Baseline
 - **QA Signoff**: Verified
 

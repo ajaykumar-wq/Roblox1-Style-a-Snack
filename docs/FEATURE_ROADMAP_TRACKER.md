@@ -1,5 +1,5 @@
 # 📋 Feature Roadmap & Sprint Backlog Tracker
-### Project: Style a Snack (Roblox1) | Repository: [sajaytmpc/Roblox1-Style-a-Snack](https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git)
+### Project: Style a Snack (Roblox1) | Repository: [ajaykumar-wq/Roblox1-Style-a-Snack](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git)
 
 > **Notion Import Tip**: Create a **Kanban Board** in Notion with columns for **Status** (`Backlog`, `In Design`, `In Development`, `Ready for QA`, `Done`) and swimlanes for **Milestone / Stage**.
 

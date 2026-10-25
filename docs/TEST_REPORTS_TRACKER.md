@@ -1,5 +1,5 @@
 # 🧪 QA Test Reports & Bug Tracker
-### Project: Style a Snack (Roblox1) | Repository: [sajaytmpc/Roblox1-Style-a-Snack](https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git)
+### Project: Style a Snack (Roblox1) | Repository: [ajaykumar-wq/Roblox1-Style-a-Snack](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git)
 
 > **Notion Import Tip**: In Notion, create a **Database** for Test Reports, with an inner linked database for Bug Tracking. Use the templates below for QA signoffs.
 
@@ -19,7 +19,7 @@
 - **Report ID**: `TR-001`
 - **Execution Date**: October 25, 2026
 - **Lead Tester**: AI Antigravity QA Suite / Studio Test Runner
-- **Target Git Ref**: Commit [`01f92ba`](https://github.com/sajaytmpc/Roblox1-Style-a-Snack/commit/01f92ba73c2bc61655c89c0de238160537e92693)
+- **Target Git Ref**: Commit [`01f92ba`](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack/commit/01f92ba73c2bc61655c89c0de238160537e92693)
 - **Target Platform**: Roblox Studio (PlaySolo & 2-Player Local Server Simulation)
 - **Overall Verdict**: **PASSED (Green) ✅**
 

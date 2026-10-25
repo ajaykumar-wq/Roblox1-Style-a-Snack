@@ -21,8 +21,8 @@ Write-Host "Current Branch: $branch" -ForegroundColor Green
 $remoteUrl = (git remote get-url origin 2>$null)
 if (-not $remoteUrl) {
     Write-Host "Adding remote origin..." -ForegroundColor Yellow
-    git remote add origin https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git
-    $remoteUrl = "https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git"
+    git remote add origin https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git
+    $remoteUrl = "https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git"
 }
 Write-Host "Remote Origin URL: $remoteUrl" -ForegroundColor Green
 
@@ -50,7 +50,7 @@ git push -u origin $branch
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "`n[SUCCESS] Successfully pushed all commits to GitHub!" -ForegroundColor Green
-    Write-Host "View your repository at: https://github.com/sajaytmpc/Roblox1-Style-a-Snack" -ForegroundColor Cyan
+    Write-Host "View your repository at: https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack" -ForegroundColor Cyan
 } else {
     Write-Host "`n[ACTION REQUIRED] Push failed or authentication is needed." -ForegroundColor Red
     Write-Host "1. Ensure the repo exists at: https://github.com/new (Name: 'Roblox1-Style-a-Snack')" -ForegroundColor Yellow

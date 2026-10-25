@@ -2,8 +2,8 @@
 
 [![Roblox](https://img.shields.io/badge/Roblox-Studio_MCP_Enabled-00A2FF?style=for-the-badge&logo=roblox&logoColor=white)](https://www.roblox.com)
 [![Luau](https://img.shields.io/badge/Language-Luau_--!strict-007ACC?style=for-the-badge&logo=lua&logoColor=white)](https://luau.org/)
-[![Status](https://img.shields.io/badge/Stage-1:_Single--Player_Core-brightgreen?style=for-the-badge)](https://github.com/sajaytmpc/Roblox1-Style-a-Snack)
-[![GitHub](https://img.shields.io/badge/Repository-sajaytmpc%2FRoblox1--Style--a--Snack-black?style=for-the-badge&logo=github)](https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git)
+[![Status](https://img.shields.io/badge/Stage-1:_Single--Player_Core-brightgreen?style=for-the-badge)](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack)
+[![GitHub](https://img.shields.io/badge/Repository-ajaykumar-wq%2FRoblox1--Style--a--Snack-black?style=for-the-badge&logo=github)](https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git)
 [![Documentation](https://img.shields.io/badge/Docs-Notion_Ready-blueviolet?style=for-the-badge&logo=notion&logoColor=white)](docs/NOTION_SETUP_GUIDE.md)
 
 > A vibrant pastry-meets-creature 3D decorating and fashion runway showcase game on Roblox. Bake, frost, sprinkle, and style whimsical snack animals (Croissant Cats, Donut Pups, Taco Turtles), compete against simulated AI rivals under strict server judging rubrics, explore a coastal boardwalk with 5 landmarks, and hatch rare creatures from the magical Bakery Oven!
@@ -218,7 +218,7 @@ Install the Rojo plugin in Studio and click **Connect**.
 
 The git remote has been configured to target the official repository:
 ```bash
-git remote add origin https://github.com/sajaytmpc/Roblox1-Style-a-Snack.git
+git remote add origin https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack.git
 ```
 
 ### How to Push Your Code & Back It Up to GitHub
@@ -233,7 +233,7 @@ If you see `repository not found` when running `git push`:
    - Run: `git push -u origin main`
    - Windows Credential Manager will prompt you for your GitHub credentials or a **Personal Access Token (PAT)**.
 3. Verify your push:
-   - Visit: `https://github.com/sajaytmpc/Roblox1-Style-a-Snack`
+   - Visit: `https://github.com/ajaykumar-wq/Roblox1-Style-a-Snack`
 
 ---
 
