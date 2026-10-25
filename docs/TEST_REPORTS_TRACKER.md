@@ -9,6 +9,7 @@
 
 | Run ID | Title | Date | Environment | Build/Commit | Pass Rate | Critical Bugs | Signoff Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **TR-002** | Stage 1 Polish & Live Studio Round Verification | 2026-10-25 | Studio PlaySolo (Edit & Play) | `1275a82` | 100% (12/12) | 0 Open | Approved ✅ |
 | **TR-001** | Stage 1 Single-Player Core Loop Certification | 2026-10-25 | Studio PlaySolo & Local Server | `01f92ba` | 100% (24/24) | 0 Open | Approved ✅ |
 | **TR-000** | Initial Luau Scaffolding Smoke Test | 2026-10-24 | Studio PlaySolo | `ce3f4aa` | 100% (6/6) | 0 Open | Approved ✅ |
 
@@ -81,6 +82,7 @@
 | **BUG-001** | Initial nil check on empty layer array in ServerJudgeService | Minor | `ServerJudgeService.luau` | Closed ✅ | `ce3f4aa` | `01f92ba` |
 | **BUG-002** | Sprinkle particle count overflow if clicked rapidly | Major | `DecorateController.luau` | Closed ✅ | `01f92ba` | `01f92ba` |
 | **BUG-003** | ProximityPrompt overlapping with Boardwalk railing collision | Minor | `ExplorationService.luau` | Closed ✅ | `01f92ba` | `01f92ba` |
+| **BUG-004** | Attempt to get length of nil `palette.Swatches` in RivalService | Critical | `RivalService.luau` | Closed ✅ | `1275a82` | `1275a82` |
 
 ---
 
