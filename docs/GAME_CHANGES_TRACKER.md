@@ -9,7 +9,7 @@
 
 | Version | Release Title | Release Date | Type | Subsystems Impacted | Commit Hash | QA Status | Deployment Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **v0.1.1** | GDD Alignment & Flow Upgrade | 2026-10-25 | `Feature` `Polish` `GDD Spec` | Round, Warmup, Data, UI, Creator | `Pending` | Passed ✅ | Live in Staging |
+| **v0.1.1** | GDD Alignment & Flow Upgrade | 2026-10-25 | `Feature` `Polish` `GDD Spec` | Round, Warmup, Data, UI, Creator | `3a04f01` | Passed ✅ | Live in Staging |
 | **v0.1.0** | Stage 1 Single-Player Core Loop | 2026-10-25 | `Major Feature` `Architecture` | All Services & Controllers | `01f92ba` | Passed ✅ | Live in Staging |
 | **v0.0.1** | Initial Luau Architecture & Scaffolding | 2026-10-24 | `Infrastructure` | Directory Structure & Starter Scripts | `ce3f4aa` | Passed ✅ | Staging Base |
 
