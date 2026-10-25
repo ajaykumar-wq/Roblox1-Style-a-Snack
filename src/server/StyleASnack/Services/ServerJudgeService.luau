@@ -16,6 +16,11 @@ export type RubricReport = {
     OccasionScore: number,  -- Max 10
     TotalScore: number,     -- Max 100
     Stars: number,          -- 1 to 5
+    JudgesFeedback: {
+        PaletteJudge: { Name: string, Score: number, Comment: string },
+        CoverageJudge: { Name: string, Score: number, Comment: string },
+        VarietyJudge: { Name: string, Score: number, Comment: string },
+    },
 }
 
 function ServerJudgeService.scoreEntry(
@@ -108,6 +113,10 @@ function ServerJudgeService.scoreEntry(
         stars = 5
     end
 
+    local macaronComment = paletteScore >= 35 and "Magnifique! These colors sing together like fresh macarons!" or "A charming start! Stick close to the theme palette next round!"
+    local pretzelComment = coverageScore >= 25 and "Now that's full coverage from head to tail! Crisp and clean!" or "Don't leave the back bare! Frost all 4 regions for maximum points!"
+    local bobaComment = (varietyScore + occasionScore) >= 20 and "This vibe is popping! The layers and theme match are pure fire!" or "Keep mixing tools, chef! Try adding an on-theme sticker!"
+
     return {
         PaletteScore = paletteScore,
         CoverageScore = coverageScore,
@@ -115,6 +124,11 @@ function ServerJudgeService.scoreEntry(
         OccasionScore = occasionScore,
         TotalScore = totalScore,
         Stars = stars,
+        JudgesFeedback = {
+            PaletteJudge = { Name = "Madame Macaron", Score = paletteScore, Comment = macaronComment },
+            CoverageJudge = { Name = "Coach Pretzel", Score = coverageScore, Comment = pretzelComment },
+            VarietyJudge = { Name = "DJ Boba", Score = varietyScore + occasionScore, Comment = bobaComment },
+        },
     }
 end
 

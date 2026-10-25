@@ -17,10 +17,14 @@ local REMOTE_EVENTS = {
     "AnalyticsEvent",
     "StickerFoundNotification",
     "GoldenSprinkleNotification",
+    "ShowControlsCard",
 }
 
 local REMOTE_FUNCTIONS = {
     "RequestThemeCards",
+    "RequestDealtTheme",
+    "SkipDealtTheme",
+    "SubmitCreatorData",
     "StartSoloRound",
     "SubmitDecorationDiff",
     "FinishRoundDecorate",

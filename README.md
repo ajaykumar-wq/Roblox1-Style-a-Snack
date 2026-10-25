@@ -35,6 +35,7 @@
 
 | Document | Purpose | File Location |
 | :--- | :--- | :--- |
+| **Game Flow & Gameplay Guide** | Complete breakdown of the 60s first minute, player-started rounds, 3 judges, and Gate 1 criteria | [`docs/GAME_FLOW_GUIDE.md`](docs/GAME_FLOW_GUIDE.md) |
 | **Notion Workspace Guide** | Blueprint for setting up Notion databases and views | [`docs/NOTION_SETUP_GUIDE.md`](docs/NOTION_SETUP_GUIDE.md) |
 | **Game Changes Tracker** | Release notes, patch history, and commit logs | [`docs/GAME_CHANGES_TRACKER.md`](docs/GAME_CHANGES_TRACKER.md) |
 | **Feature Roadmap Tracker** | Sprint backlog, Kanban tasks, and technical criteria | [`docs/FEATURE_ROADMAP_TRACKER.md`](docs/FEATURE_ROADMAP_TRACKER.md) |

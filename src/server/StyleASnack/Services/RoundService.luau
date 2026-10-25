@@ -39,6 +39,19 @@ function RoundService.init()
         return RoundService.generateThemeCards()
     end
 
+    local dealtThemeFunc = Remotes.getFunction("RequestDealtTheme")
+    dealtThemeFunc.OnServerInvoke = function(player: Player)
+        return RoundService.dealThemeForPlayer(player)
+    end
+
+    local skipThemeFunc = Remotes.getFunction("SkipDealtTheme")
+    skipThemeFunc.OnServerInvoke = function(player: Player)
+        if DataService.consumeDailySkip(player) then
+            return RoundService.dealThemeForPlayer(player)
+        end
+        return nil, "Daily skip already used"
+    end
+
     local startRoundFunc = Remotes.getFunction("StartSoloRound")
     startRoundFunc.OnServerInvoke = function(player: Player, themeCard: any)
         return RoundService.startSoloRound(player, themeCard)
@@ -85,6 +98,30 @@ function RoundService.init()
         end
         return false
     end
+end
+
+function RoundService.dealThemeForPlayer(player: Player): { Occasion: ThemeConfig.Occasion, Palette: ThemeConfig.Palette, CanSkip: boolean }
+    local rng = Random.new()
+    local validOccasions = {}
+    for _, occ in ipairs(ThemeConfig.Occasions) do
+        if not table.find(pastOccasions, occ.Id) then
+            table.insert(validOccasions, occ)
+        end
+    end
+    if #validOccasions == 0 then
+        validOccasions = table.clone(ThemeConfig.Occasions)
+        table.clear(pastOccasions)
+    end
+    local occ = validOccasions[rng:NextInteger(1, #validOccasions)]
+    table.insert(pastOccasions, occ.Id)
+    if #pastOccasions > 6 then table.remove(pastOccasions, 1) end
+
+    local pal = ThemeConfig.Palettes[rng:NextInteger(1, #ThemeConfig.Palettes)]
+    return {
+        Occasion = occ,
+        Palette = pal,
+        CanSkip = DataService.canUseDailySkip(player),
+    }
 end
 
 function RoundService.generateThemeCards(): { { Occasion: ThemeConfig.Occasion, Palette: ThemeConfig.Palette } }

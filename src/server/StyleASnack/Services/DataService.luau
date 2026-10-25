@@ -21,6 +21,13 @@ export type PlayerProfile = {
     CompletedRounds: number,
     HasCompletedWarmup: boolean,
     HasTesterKit: boolean,
+    DailyThemeSkipUsed: boolean,
+    CreatorData: {
+        Family: string,
+        Flavor: string,
+        EyeShape: string,
+        Name: string,
+    }?,
     UnlockedTools: { [string]: boolean },
     FirstJoinTime: number,
     Ledger: { { Timestamp: number, Type: string, Amount: number, Reason: string, Balance: number } },
@@ -44,6 +51,12 @@ function DataService.init()
     local getProfileFunc = Remotes.getFunction("GetProfile")
     getProfileFunc.OnServerInvoke = function(player)
         return DataService.getProfile(player)
+    end
+
+    local submitCreatorFunc = Remotes.getFunction("SubmitCreatorData")
+    submitCreatorFunc.OnServerInvoke = function(player, data)
+        DataService.setCreatorData(player, data)
+        return true
     end
 end
 
@@ -69,6 +82,8 @@ function DataService.loadProfile(player: Player): PlayerProfile
         CompletedRounds = 0,
         HasCompletedWarmup = false,
         HasTesterKit = false,
+        DailyThemeSkipUsed = false,
+        CreatorData = nil,
         UnlockedTools = {
             Icing = true,
             Sprinkle = false,
@@ -106,7 +121,7 @@ function DataService.syncProfile(player: Player)
 end
 
 function DataService.isToolUnlocked(player: Player, toolName: string): boolean
-    local profile = profiles[player]
+    local profile = profiles[player.UserId]
     if not profile then return false end
 
     if profile.HasTesterKit then
@@ -118,8 +133,30 @@ function DataService.isToolUnlocked(player: Player, toolName: string): boolean
     return profile.UnlockedTools[toolName] == true
 end
 
+function DataService.setCreatorData(player: Player, data: { Family: string, Flavor: string, EyeShape: string, Name: string })
+    local profile = profiles[player.UserId]
+    if not profile then return end
+
+    profile.CreatorData = data
+    DataService.syncProfile(player)
+end
+
+function DataService.canUseDailySkip(player: Player): boolean
+    local profile = profiles[player.UserId]
+    if not profile then return false end
+    return not profile.DailyThemeSkipUsed
+end
+
+function DataService.consumeDailySkip(player: Player): boolean
+    local profile = profiles[player.UserId]
+    if not profile or profile.DailyThemeSkipUsed then return false end
+    profile.DailyThemeSkipUsed = true
+    DataService.syncProfile(player)
+    return true
+end
+
 function DataService.advanceLevel(player: Player)
-    local profile = profiles[player]
+    local profile = profiles[player.UserId]
     if not profile then return end
 
     local currentLvlDef = ProgressionConfig.getLevel(profile.CurrentLevel)
@@ -154,7 +191,7 @@ function DataService.advanceLevel(player: Player)
 end
 
 function DataService.checkLevelObjective(player: Player, eventType: string, eventData: { [string]: any })
-    local profile = profiles[player]
+    local profile = profiles[player.UserId]
     if not profile then return end
 
     local lvlDef = ProgressionConfig.getLevel(profile.CurrentLevel)
@@ -184,7 +221,7 @@ function DataService.checkLevelObjective(player: Player, eventType: string, even
 end
 
 function DataService.incrementCompletedRounds(player: Player)
-    local profile = profiles[player]
+    local profile = profiles[player.UserId]
     if not profile then return end
 
     profile.CompletedRounds += 1
@@ -201,6 +238,7 @@ function DataService.incrementCompletedRounds(player: Player)
             Reason = EconomyConfig.ReasonCodes.TESTER_KIT,
             Balance = profile.Sparkle,
         })
+        print(string.format("[TesterKit] Tester kit unlocked for %s after round 3!", player.Name))
     end
 
     DataService.syncProfile(player)

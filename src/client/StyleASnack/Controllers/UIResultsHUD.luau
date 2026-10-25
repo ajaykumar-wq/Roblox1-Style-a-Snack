@@ -133,16 +133,27 @@ function UIResultsHUD.show(resultsData: any)
     if rubricContainer and resultsData.Rubric then
         local r = resultsData.Rubric
         local r1 = rubricContainer:FindFirstChild("Rubric_1") :: TextLabel?
-        if r1 then r1.Text = string.format("🎨 Theme Colors: %d/40 pts", r.PaletteScore or 0) end
+        if r1 then
+            local comment = r.JudgesFeedback and r.JudgesFeedback.PaletteJudge and r.JudgesFeedback.PaletteJudge.Comment or ""
+            r1.Text = string.format("🎨 Madame Macaron: %d/40 pts — \"%s\"", r.PaletteScore or 0, comment)
+        end
 
         local r2 = rubricContainer:FindFirstChild("Rubric_2") :: TextLabel?
-        if r2 then r2.Text = string.format("🧁 Full Coverage: %d/30 pts", r.CoverageScore or 0) end
+        if r2 then
+            local comment = r.JudgesFeedback and r.JudgesFeedback.CoverageJudge and r.JudgesFeedback.CoverageJudge.Comment or ""
+            r2.Text = string.format("🧁 Coach Pretzel: %d/30 pts — \"%s\"", r.CoverageScore or 0, comment)
+        end
 
         local r3 = rubricContainer:FindFirstChild("Rubric_3") :: TextLabel?
-        if r3 then r3.Text = string.format("✨ Tool Variety: %d/20 pts", r.VarietyScore or 0) end
+        if r3 then
+            r3.Text = string.format("✨ Tool Variety: %d/20 pts", r.VarietyScore or 0)
+        end
 
         local r4 = rubricContainer:FindFirstChild("Rubric_4") :: TextLabel?
-        if r4 then r4.Text = string.format("🏷️ Occasion Match: %d/10 pts", r.OccasionScore or 0) end
+        if r4 then
+            local comment = r.JudgesFeedback and r.JudgesFeedback.VarietyJudge and r.JudgesFeedback.VarietyJudge.Comment or ""
+            r4.Text = string.format("🏷️ DJ Boba: %d/30 pts — \"%s\"", (r.VarietyScore or 0) + (r.OccasionScore or 0), comment)
+        end
     end
 end
 

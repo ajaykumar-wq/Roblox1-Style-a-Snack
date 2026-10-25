@@ -22,12 +22,15 @@ local UIMapModal = require(script.Parent.UIMapModal)
 local UIResultsHUD = require(script.Parent.UIResultsHUD)
 local UIOvenModal = require(script.Parent.UIOvenModal)
 local UIIndexModal = require(script.Parent.UIIndexModal)
+local UICreatorModal = require(script.Parent.UICreatorModal)
+local UIControlsCardModal = require(script.Parent.UIControlsCardModal)
 
 local UIController = {}
 
 local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 local screenGui: ScreenGui? = nil
+local hasSeenControlsCard = false
 
 -- Profile Cache
 local profileData = {
@@ -87,6 +90,14 @@ function UIController.init()
     end)
 
     UIIndexModal.init(screenGui)
+
+    UICreatorModal.init(screenGui, function(data)
+        print(string.format("[Creator] Companion created: %s (%s, %s)", data.Name, data.Family, data.Flavor))
+    end)
+
+    UIControlsCardModal.init(screenGui, function()
+        UIThemeChoice.open()
+    end)
 
     -- Build Base HUDs
     UIController.createHomeHUD()
@@ -177,13 +188,22 @@ function UIController.init()
         UIController.shakeTray()
     end)
 
-    -- Initial Profile Fetch
+    -- Initial Profile Fetch & First-Minute Creator Trigger
     task.spawn(function()
         local p = Remotes.getFunction("GetProfile"):InvokeServer()
         if p then
             profileData = p
             UIController.updateHeaderChips()
             UIController.updateToolTrayLocks()
+
+            -- GDD First-Minute rule: Creator opens 5 seconds after spawn for new players
+            if not profileData.HasCompletedWarmup and not profileData.CreatorData then
+                task.delay(5, function()
+                    if not profileData.HasCompletedWarmup then
+                        UICreatorModal.open()
+                    end
+                end)
+            end
         end
     end)
 end
@@ -295,7 +315,14 @@ function UIController.createHomeHUD()
     end
 
     makeButton("🎨 Decorate", Color3.fromRGB(255, 107, 107), UDim2.new(0, 0, 0, 0), function()
-        UIThemeChoice.open()
+        if not hasSeenControlsCard then
+            hasSeenControlsCard = true
+            UIControlsCardModal.open(function()
+                UIThemeChoice.open()
+            end)
+        else
+            UIThemeChoice.open()
+        end
     end)
 
     makeButton("🥐 Oven", Color3.fromRGB(255, 159, 67), UDim2.new(0, 135, 0, 0), function()

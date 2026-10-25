@@ -23,8 +23,8 @@ local activeWarmups: { [number]: {
 function WarmupService.init()
     local function handlePlayer(player: Player)
         local spawnTime = os.time()
-        -- Trigger warmup 20 seconds after spawn for new players who haven't completed it
-        task.delay(20, function()
+        -- Revised first minute (Oct 25 GDD): Creator 5-25s, Warm-up Decorate 25-50s, Runway 50-60s
+        task.delay(25, function()
             if not player:IsDescendantOf(Players) then return end
             local profile = DataService.getProfile(player)
             if profile and not profile.HasCompletedWarmup then
@@ -53,11 +53,11 @@ function WarmupService.startWarmup(player: Player, spawnTime: number)
     Remotes.getEvent("StartWarmup"):FireClient(player, {
         Occasion = beachOccasion,
         Palette = sunnyPalette,
-        Duration = 30, -- 30s private decorate
+        Duration = 25, -- 25s warm-up decorate
     })
 
-    -- 30s Decorate -> 10s Runway -> Scoring at 40s (60s since spawn)
-    task.delay(30, function()
+    -- 25s Decorate (25-50s) -> 10s Runway (50-60s) -> First score lands at 60s
+    task.delay(25, function()
         if not player:IsDescendantOf(Players) then return end
         local warmup = activeWarmups[player.UserId]
         if not warmup then return end

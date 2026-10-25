@@ -67,9 +67,28 @@ function UIMapModal.init(parentGui: ScreenGui)
         lmClue.Parent = lmCard
     end
 
+    local helpBtn = Instance.new("TextButton")
+    helpBtn.Size = UDim2.new(0, 150, 0, 44)
+    helpBtn.Position = UDim2.new(0.5, -160, 1, -55)
+    helpBtn.BackgroundColor3 = Color3.fromRGB(76, 175, 80)
+    helpBtn.Font = Enum.Font.FredokaOne
+    helpBtn.TextSize = 16
+    helpBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+    helpBtn.Text = "❓ Help (Controls)"
+    helpBtn.Parent = frame
+
+    local hCorner = Instance.new("UICorner")
+    hCorner.CornerRadius = UDim.new(0, 14)
+    hCorner.Parent = helpBtn
+
+    helpBtn.MouseButton1Click:Connect(function()
+        local UIControlsCardModal = require(script.Parent.UIControlsCardModal)
+        UIControlsCardModal.open()
+    end)
+
     local closeBtn = Instance.new("TextButton")
-    closeBtn.Size = UDim2.new(0, 140, 0, 44)
-    closeBtn.Position = UDim2.new(0.5, -70, 1, -55)
+    closeBtn.Size = UDim2.new(0, 150, 0, 44)
+    closeBtn.Position = UDim2.new(0.5, 10, 1, -55)
     closeBtn.BackgroundColor3 = Color3.fromRGB(60, 70, 85)
     closeBtn.Font = Enum.Font.FredokaOne
     closeBtn.TextSize = 18

@@ -9,6 +9,7 @@
 
 | Version | Release Title | Release Date | Type | Subsystems Impacted | Commit Hash | QA Status | Deployment Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **v0.1.1** | GDD Alignment & Flow Upgrade | 2026-10-25 | `Feature` `Polish` `GDD Spec` | Round, Warmup, Data, UI, Creator | `Pending` | Passed ✅ | Live in Staging |
 | **v0.1.0** | Stage 1 Single-Player Core Loop | 2026-10-25 | `Major Feature` `Architecture` | All Services & Controllers | `01f92ba` | Passed ✅ | Live in Staging |
 | **v0.0.1** | Initial Luau Architecture & Scaffolding | 2026-10-24 | `Infrastructure` | Directory Structure & Starter Scripts | `ce3f4aa` | Passed ✅ | Staging Base |
 
@@ -17,6 +18,20 @@
 ## Detailed Release Entries
 
 ---
+
+### 📦 Release v0.1.1 — Prototype GDD Alignment & Gameplay Flow Upgrade
+- **Release Date**: October 25, 2026
+- **Git Commit**: `v0.1.1`
+- **Deployment Status**: 🟢 Active in Development & Staging
+- **QA Signoff**: Verified against Prototype GDD (Oct 24/25, 2026) (Pass ✅)
+
+#### 🌟 Highlights
+- **60-Second First Minute Flow**: Orchestrated exact timeline (Spawn 0-5s, Creator 5-25s, Warm-up Decorate 25-50s, Judging 50-60s, First Score at 1:00 with 20 Sparkles).
+- **Meet Your Snackimal Creator (`UICreatorModal.luau`)**: 3-step creation (Family, Look/Flavor, Curated Name) plus big "Surprise Me!" button.
+- **Controls Card ("Three Things to Know") (`UIControlsCardModal.luau`)**: Walk, Decorate, Undo guide shown on first Decorate tap and accessible via Map ➔ Help.
+- **Auto-Dealt Theme with "Skip Once Today" (`UIThemeChoice.luau`)**: Drumroll theme reveal, 3-second countdown auto-start, and daily skip allowance.
+- **Three Snackimal Judges**: Integrated Madame Macaron, Coach Pretzel, and DJ Boba voices & feedback into `ServerJudgeService` and `UIResultsHUD`.
+- **DataService Fixes**: Fixed player key indexing bug; added daily skip tracking and creator profile persistence.
 
 ### 📦 Release v0.1.0 — Stage 1 Single-Player Core Loop
 - **Release Date**: October 25, 2026
