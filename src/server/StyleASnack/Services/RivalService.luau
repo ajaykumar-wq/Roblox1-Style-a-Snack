@@ -35,6 +35,9 @@ function RivalService.generateRivals(
     unlockedTools: { [string]: boolean },
     playerRank: number
 ): { RivalEntry }
+    local resolvedPalette = (palette and palette.Swatches) and palette or ThemeConfig.getPaletteById(palette and palette.Id or "sunny") or ThemeConfig.Palettes[1]
+    local resolvedOccasion = (occasion and occasion.Tag) and occasion or ThemeConfig.getOccasionById(occasion and occasion.Id or "beach_day") or ThemeConfig.Occasions[1]
+
     local rng = Random.new()
     local rivals: { RivalEntry } = {}
 
@@ -64,13 +67,13 @@ function RivalService.generateRivals(
         local regionsToIce = table.clone(SpeciesConfig.Regions)
         for _ = 1, numIcing do
             local reg = table.remove(regionsToIce, rng:NextInteger(1, #regionsToIce))
-            local swatchIdx = rng:NextInteger(1, #palette.Swatches)
+            local swatchIdx = rng:NextInteger(1, #resolvedPalette.Swatches)
             table.insert(layers, {
                 Id = HttpService:GenerateGUID(false),
                 Tool = "Icing",
                 Region = reg,
                 SwatchIndex = swatchIdx,
-                Color = palette.Swatches[swatchIdx],
+                Color = resolvedPalette.Swatches[swatchIdx],
             })
         end
 
@@ -81,7 +84,7 @@ function RivalService.generateRivals(
                 Tool = "Sprinkle",
                 ItemId = "rainbow_pill",
                 Count = rng:NextInteger(15, 40),
-                Color = palette.Swatches[rng:NextInteger(1, #palette.Swatches)],
+                Color = resolvedPalette.Swatches[rng:NextInteger(1, #resolvedPalette.Swatches)],
             })
         end
 
@@ -90,7 +93,7 @@ function RivalService.generateRivals(
             local stickerItems = DecorationConfig.Tools.Sticker.Items
             local matchedSticker = nil
             for _, item in ipairs(stickerItems) do
-                if item.Tag == occasion.Tag then matchedSticker = item; break end
+                if item.Tag == resolvedOccasion.Tag then matchedSticker = item; break end
             end
             local chosenSticker = (matchedSticker and rng:NextNumber() > 0.4) and matchedSticker or stickerItems[rng:NextInteger(1, #stickerItems)]
             table.insert(layers, {
@@ -105,13 +108,13 @@ function RivalService.generateRivals(
             table.insert(layers, {
                 Id = HttpService:GenerateGUID(false),
                 Tool = "Drizzle",
-                SwatchIndex = rng:NextInteger(1, #palette.Swatches),
-                Color = palette.Swatches[rng:NextInteger(1, #palette.Swatches)],
+                SwatchIndex = rng:NextInteger(1, #resolvedPalette.Swatches),
+                Color = resolvedPalette.Swatches[rng:NextInteger(1, #resolvedPalette.Swatches)],
             })
         end
 
         -- Score rival with ServerJudge
-        local rubric = ServerJudgeService.scoreEntry(layers, occasion.Id, palette.Id, #availableTools)
+        local rubric = ServerJudgeService.scoreEntry(layers, resolvedOccasion.Id, resolvedPalette.Id, #availableTools)
 
         -- Add slight variance (-5 to +5) for organic feel
         local variance = rng:NextInteger(-5, 5)
